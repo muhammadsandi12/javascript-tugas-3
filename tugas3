@@ -1,0 +1,112 @@
+const cekProduk = (data) =>{
+    return new Promise((resolve, reject) =>{
+        setTimeout(() =>{
+            const listProduk = [
+                {
+                namaProduk: 'sepatu',
+                harga : 200000
+                },
+                {
+                namaProduk: 'baju',
+                harga : 30000
+                },
+                {
+                namaProduk: 'celana',
+                harga : 70000
+                }
+
+            ]
+            let cek = listProduk.find((item) =>{
+                return item.namaProduk === data
+            })
+
+            if(cek){
+                resolve(cek)
+            }else{
+                reject(new Error('maaf barang belum tersedia'))
+            }
+
+
+        }, 3000)
+    })
+}
+
+cekProduk('baju').then((data) =>{
+    console.log(`namaProduk: ${data.namaProduk}\nharga: ${data.harga} `)
+}).catch((err) =>{
+    console.log(err.message)
+})
+
+
+async function produk() {
+    try{
+    let dataProduk = await cekProduk('ikat pinggang')
+    console.log(dataProduk)
+    }catch(err){
+    console.log(err.message)
+    }
+}
+
+produk()
+
+
+
+
+const cekHargaBuah = (nama) =>{
+    return new Promise((resolve, reject) =>{
+        setTimeout(() =>{
+            const listBuah = [
+                {
+                namaBuah: 'strawberry',
+                harga : 50000,
+                satuan: 'kg'
+                },
+                {
+                namaBuah: 'semangka',
+                harga : 20000,
+                satuan : 'kg'
+                },
+                {
+                namaBuah: 'pisang',
+                harga : 7000,
+                satuan: 'kg'
+                }
+
+            ]
+            let cek = listBuah.find((item) =>{
+                return item.namaBuah === nama
+            })
+
+            if(cek){
+                resolve(cek)
+            }else{
+                reject(new Error('maaf buah belum tersedia'))
+            }
+
+
+        }, 3000)
+    })
+}
+
+cekHargaBuah('semangka').then((data) =>{
+    console.log(`namaProduk: ${data.namaBuah}\nharga: ${data.harga} ${data.satuan} `)
+}).catch((err) =>{
+    console.log(err.message)
+})
+
+
+async function hargaBuah() {
+    try{
+    let dataBuah = await cekHargaBuah('semangka')
+    console.log(`buah: ${dataBuah.namaBuah}\nharga:${dataBuah.harga}`)
+    }catch(err){
+    console.log(err.message)
+    }
+}
+
+hargaBuah()
+
+
+
+
+
