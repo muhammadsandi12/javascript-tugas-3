@@ -13,9 +13,13 @@ const getMethod = (callback) =>{
 
 
 const showMonth = (err,month) => {
-     month.map((el,ind) =>{
-        console.log(el)
-    })
+     if(err == null){
+        month.map((el,ind) =>{
+            console.log(el)
+        })
+     }else{
+        console.log(err)
+     }
 }
 
 getMethod(showMonth)
