@@ -18,20 +18,27 @@ const cekHariKerja = (day ) => {
 
 
 
-cekHariKerja('senin').then(day =>{
+cekHariKerja('senin').then(day =>{   // then = untuk mendapatkan atau mengubah data ketika promise sukses
     console.log('hari ini hari',day, 'selamat bekerja')
-}).catch((err) =>{
+}).catch((err) =>{     // untuk mendapatkan data error ketika promise gagal
     console.log(err.message)
 })
 
 async function cekTryCatch (){
 
-try{
+try{  
     let result = await cekHariKerja('minggu')
     console.log(result)
 }catch(err){
     console.log(err)
 }
+
+/* try catch untuk mengatasi error handling pada async/await 
+try = blok kode untuk dijalankan / di uji
+catch = blok kode yang akan di eksekusi apabila terjadi error 
+
+*/
+
 }
 
 cekTryCatch()
